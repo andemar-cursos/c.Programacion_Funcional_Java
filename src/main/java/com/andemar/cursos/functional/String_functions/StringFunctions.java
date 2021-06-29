@@ -1,4 +1,4 @@
-package com.andemar.cursos.functional.StringFunctions;
+package com.andemar.cursos.functional.String_functions;
 
 import java.util.function.BiFunction;
 import java.util.function.UnaryOperator;
