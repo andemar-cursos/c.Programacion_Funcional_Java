@@ -17,7 +17,7 @@ public class NombreUtils {
         profesores.forEach(System.out::println);
     }
 
-    static <T> List<T> getList(T... elements){
+    public static <T> List<T> getList(T... elements){
         return Arrays.asList(elements);
     }
 }
