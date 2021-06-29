@@ -1,5 +1,7 @@
 package com.andemar.cursos.functional.math;
 
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -36,7 +38,15 @@ public class MathFunction  {
 
         Predicate<Student> aprobo = student -> student.getCalificacion() >= 6;
 
-        System.out.println(aprobo.test(new Student(5.0)));
+//        System.out.println(aprobo.test(new Student(5.0)));
+
+
+        // Ejemplo 4 ****************
+
+        BiFunction<Integer, Integer, Integer> multiplicacion = (x, y) -> x*y;
+
+        System.out.println(multiplicacion.apply(5,5));
+
     }
 
 
