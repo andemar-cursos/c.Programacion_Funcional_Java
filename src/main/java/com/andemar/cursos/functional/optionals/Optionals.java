@@ -17,7 +17,7 @@ public class Optionals {
         // O se puede imprimir cada elemento
         optional.ifPresent(list -> list.forEach(System.out::print));
 
-        
+
 
     }
 
