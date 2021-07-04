@@ -1,11 +1,15 @@
 package com.andemar.cursos.jobsearch;
 
+import com.andemar.cursos.jobsearch.api.ApiJobs;
 import com.andemar.cursos.jobsearch.cli.CLIArguments;
+import com.andemar.cursos.jobsearch.cli.CLIFunctions;
 import com.andemar.cursos.jobsearch.models.JobPosition;
+import static com.andemar.cursos.jobsearch.utils.APIFunctions.buildAPI;
 import com.beust.jcommander.JCommander;
 
 import static com.andemar.cursos.jobsearch.utils.CommanderFunctions.parseArguments;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
@@ -20,7 +24,7 @@ public class JobSearch {
         JCommander jCommander = buildCommanderWithName("job-search", CLIArguments::newInstance);
 
         Stream<CLIArguments> streamOfCLI =
-                parseArguments(jCommander, args, jCommander::usage)
+                parseArguments(jCommander, args, JCommander::usage)
                 .orElse(Collections.emptyList()).stream()
                 .map(obj -> (CLIArguments) obj);
 
@@ -36,6 +40,10 @@ public class JobSearch {
     }
 
     private static Stream<JobPosition> executeRequest(Map<String, Object> params) {
-        
+        ApiJobs api = buildAPI(ApiJobs.class, "https://jobs.github.com");
+
+        return Stream.of(params)
+                .map(api::jobs)
+                .flatMap(Collection::stream);
     }
 }
