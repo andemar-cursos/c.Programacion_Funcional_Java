@@ -10,7 +10,7 @@ public class Streams {
 
     public static void main(String[] args) {
 
-        List<String> curseList = NombreUtils.getList("Java, Frontend, Backend, FullStack");
+        List<String> curseList = NombreUtils.getList("Java", "Frontend", "Backend", "FullStack");
 
         // Originalmente se hace asi
         for (String curse: curseList) {
@@ -30,5 +30,16 @@ public class Streams {
         // a llamar el Stream de coursesStream. Los Streams son de unica ejecucion.
 //        Stream<Integer> courseLengthStream = coursesStream.map(course -> course.length());
 //        Optional<Integer> longest = courseLengthStream.max((x,y) -> y - x);
+
+
+        // Ejemplo 2
+
+        Stream<String> cursesStream2 = curseList.stream();
+
+        cursesStream2   .map(course -> course + "!!")
+                        .filter(course -> course.contains("Java"))
+                        .forEach(System.out::println);
+
+
     }
 }
